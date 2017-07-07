@@ -90,7 +90,7 @@
 					<span class="product-author-link"> </span>
 				</p>
 
-				<p class="book-description">${produto.description}</p>
+				<p class="book-description">${produto.descricao}</p>
 			</div>
 		</header>
 
@@ -98,7 +98,7 @@
 		<section class="buy-options clearfix">
 			<form action="/carrinho/add" method="post" class="container">
 				<ul id="variants" class="clearfix">
-					<c:forEach items="" var="preco">
+					<c:forEach items="${produto.precos}" var="preco">
 						<li class="buy-option"><input type="radio" name="id"
 							class="variant-radio" id="" value="9720393823" checked="checked" />
 							<input type="hidden" value="${produto.id}" value="produtoId" />
@@ -108,7 +108,7 @@
 					</c:forEach>
 				</ul>
 				<button type="submit" class="submit-image icon-basket-alt"
-					alt="Compre Agora" title="Compre Agora ${produto.titlo}!"></button>
+					alt="Compre Agora" title="Compre Agora ${produto.titulo}!"></button>
 
 			</form>
 

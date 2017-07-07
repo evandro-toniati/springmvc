@@ -24,6 +24,13 @@ public class Produto {
     private Calendar dataLancamento;
     private String sumarioPath;
 
+	public int getid() {
+		return id;
+	}
+	public void setid(int id) {
+		this.id = id;
+	}
+    
 	public String getTitulo() {
 		return titulo;
 	}
