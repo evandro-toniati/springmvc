@@ -29,6 +29,8 @@ public class ProdutosController {
 	@RequestMapping("/form")
     public ModelAndView form(Produto produto){
 
+		System.out.println(System.getProperty("java.class.path"));
+		
         ModelAndView modelAndView = new ModelAndView("produtos/form");
         modelAndView.addObject("tipos", TipoPreco.values());
 
@@ -40,15 +42,12 @@ public class ProdutosController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView gravar(MultipartFile sumario, @Valid Produto produto, BindingResult result, RedirectAttributes redirectAttributes){
-		
-		System.out.println(sumario.getOriginalFilename());
-		
+				
 		if(result.hasErrors()){
 	        return form(produto);
 	    }
-	 System.out.println(produto);
 	 String path = fileSaver.write("arquivos-sumario", sumario);
-	    produto.setSumarioPath(path);
+	 produto.setSumarioPath(path);
 	 produtoDao.gravar(produto);
 	 redirectAttributes.addFlashAttribute("sucesso","Produto cadastrado com sucesso!");
 	 return new ModelAndView("redirect:produtos");

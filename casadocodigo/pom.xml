@@ -12,6 +12,16 @@
 		  <groupId>org.eclipse.jetty</groupId>
 		  <artifactId>jetty-maven-plugin</artifactId>
 		  <version>9.4.6.v20170531</version>
+		  <configuration>
+	        <webApp>
+	            <contextPath>/casadocodigo</contextPath>
+	            <descriptor>${project.build.directory}/${project.build.finalName}/WEB-INF/web.xml</descriptor>
+	            <resourceBases>
+	                <baseResource>src/main/webapp</baseResource>
+<!-- 	                <baseResource>some/other/directory</baseResource> -->
+	            </resourceBases>
+	        </webApp>
+    	  </configuration>
 	  </plugin>
   </plugins>
   </build>
