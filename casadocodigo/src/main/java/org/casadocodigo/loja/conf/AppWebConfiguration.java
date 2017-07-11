@@ -3,6 +3,7 @@ package org.casadocodigo.loja.conf;
 import org.casadocodigo.loja.controllers.HomeController;
 import org.casadocodigo.loja.daos.ProdutoDAO;
 import org.casadocodigo.loja.infra.FileSaver;
+import org.casadocodigo.loja.models.CarrinhoCompras;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -21,13 +22,14 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @PropertySource("/WEB-INF/config.properties")
 @EnableWebMvc
-@ComponentScan(basePackageClasses = { HomeController.class, ProdutoDAO.class, FileSaver.class })
+@ComponentScan(basePackageClasses = { HomeController.class, ProdutoDAO.class, FileSaver.class, CarrinhoCompras.class })
 public class AppWebConfiguration {
 	@Bean
 	public InternalResourceViewResolver internalResourceViewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
+		resolver.setExposedContextBeanNames("carrinhoCompras");
 		return resolver;
 	}
 
@@ -59,4 +61,5 @@ public class AppWebConfiguration {
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
 	}
+
 }
