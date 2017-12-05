@@ -1,5 +1,7 @@
 package org.casadocodigo.loja.models;
 
+import java.math.BigDecimal;
+
 public class CarrinhoItem {
 
     private TipoPreco tipoPreco;
@@ -52,4 +54,11 @@ public class CarrinhoItem {
             return false;
         return true;
     }
+    
+	public BigDecimal getPreco(){
+	    return produto.precoPara(tipoPreco);
+	}
+	public BigDecimal getTotal(int quantidade) {
+	    return this.getPreco().multiply(new BigDecimal(quantidade));
+	}
 }
